@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Authorized</title>
+  </head>
+  <body>
+    <script>
+        const token = window.location.hash.slice(1).split('&').find(param => param.startsWith('access_token='))?.split('=')[1];
+        console.log("Redirected with token:", token, window.location.hash);
+        if (token) {
+            document.body.innerText = "Authorization successful! Token: " + token;
+        } else {
+            document.body.innerText = "Authorization failed: No token found.";
+        }
+    </script>
+  </body>
+</html>
